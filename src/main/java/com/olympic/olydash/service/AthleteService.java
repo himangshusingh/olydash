@@ -1,6 +1,7 @@
 package com.olympic.olydash.service;
+
 import com.olympic.olydash.model.Athlete;
-import com.olympic.olydash.repository.AthleteRepository;
+import com.olympic.olydash.repository.AthleteDao;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,17 +9,17 @@ import java.util.List;
 @Service
 public class AthleteService {
 
-    private final AthleteRepository athleteRepository;
+    private final AthleteDao athleteDao;
 
-    public AthleteService(AthleteRepository athleteRepository) {
-        this.athleteRepository = athleteRepository;
+    public AthleteService(AthleteDao athleteDao) {
+        this.athleteDao = athleteDao;
     }
 
     public List<Athlete> getAllAthletes() {
-        return athleteRepository.findAll();
+        return athleteDao.findAll();
     }
 
     public void addAthlete(Athlete athlete) {
-        athleteRepository.save(athlete);
+        athleteDao.save(athlete);
     }
 }
